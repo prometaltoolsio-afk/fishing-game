@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>River Angler - 2D Cartoon Fishing Game</title>
+  <link rel="stylesheet" href="style.css">
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.80.1/phaser.min.js"
+    onerror="document.getElementById('load-error').style.display='block';">
+  </script>
+</head>
+<body>
+  <div id="game-container"></div>
+  <div id="load-error" role="alert">
+    Phaser could not load. Check your internet connection and reload this page.
+  </div>
+  <script>
+    window.addEventListener('error', function (event) {
+      const box = document.getElementById('load-error');
+      if (box) {
+        box.style.display = 'block';
+        box.textContent = 'Game error: ' + (event.message || 'The game could not start.');
+      }
+    });
+    window.addEventListener('unhandledrejection', function (event) {
+      const box = document.getElementById('load-error');
+      if (box) {
+        box.style.display = 'block';
+        box.textContent = 'Game startup error: ' + (event.reason?.message || event.reason || 'Unknown error');
+      }
+    });
+  </script>
+  <script src="game.js"></script>
+</body>
+</html>
