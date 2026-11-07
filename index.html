@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Castle Siege Defense - Physics Puzzle</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="gameCanvas" width="1280" height="720"></canvas>
+
+    <!-- Top In-Game HUD -->
+    <div id="hud" class="ui-layer hidden">
+      <div class="hud-panel left">
+        <div class="castle-hp-wrapper">
+          <span class="hud-label">CASTLE</span>
+          <div class="hp-bar-outer"><div id="castle-hp-bar" class="hp-bar-inner"></div></div>
+          <span id="castle-hp-text">1000/1000</span>
+        </div>
+        <div class="ammo-wrapper">
+          <span class="hud-label">AMMO:</span>
+          <span id="ammo-count">∞</span>
+        </div>
+      </div>
+
+      <div class="hud-panel center">
+        <div id="level-display">Level 1</div>
+        <div id="wave-display">Enemies: 0/0</div>
+      </div>
+
+      <div class="hud-panel right">
+        <button id="btn-sound" class="btn-hud" title="Toggle Sound">🔊</button>
+        <button id="btn-restart-hud" class="btn-hud" title="Restart Level">🔄</button>
+        <button id="btn-menu-hud" class="btn-hud" title="Exit to Menu">☰</button>
+      </div>
+    </div>
+
+    <!-- Bottom Unit Selection Dock -->
+    <div id="troop-dock" class="ui-layer hidden">
+      <div class="troop-card active" data-unit="archer">
+        <div class="card-icon">🏹</div>
+        <div class="card-info">
+          <span class="card-name">ARCHER</span>
+          <span class="card-cost">Hold & Drag</span>
+        </div>
+        <div class="cooldown-overlay" id="cd-archer"></div>
+      </div>
+
+      <div class="troop-card" data-unit="cannon">
+        <div class="card-icon">💣</div>
+        <div class="card-info">
+          <span class="card-name">CANNON</span>
+          <span class="card-cost">Heavy Blast</span>
+        </div>
+        <div class="cooldown-overlay" id="cd-cannon"></div>
+      </div>
+
+      <div class="troop-card" data-unit="infantry">
+        <div class="card-icon">⚔️</div>
+        <div class="card-info">
+          <span class="card-name">INFANTRY</span>
+          <span class="card-cost">Deploy Ground</span>
+        </div>
+        <div class="cooldown-overlay" id="cd-infantry"></div>
+      </div>
+
+      <div class="troop-card" data-unit="cavalry">
+        <div class="card-icon">🐎</div>
+        <div class="card-info">
+          <span class="card-name">CAVALRY</span>
+          <span class="card-cost">Fast Charge</span>
+        </div>
+        <div class="cooldown-overlay" id="cd-cavalry"></div>
+      </div>
+    </div>
+
+    <!-- Main Menu Screen -->
+    <div id="menu-screen" class="ui-modal">
+      <div class="modal-box menu-box">
+        <h1 class="game-title">CASTLE SIEGE<span>DEFENSE</span></h1>
+        <p class="game-subtitle">PHYSICS TACTICS & DESTRUCTION</p>
+        <div class="menu-actions">
+          <button id="btn-play" class="btn-primary">PLAY CAMPAIGN</button>
+          <button id="btn-level-select" class="btn-secondary">SELECT LEVEL</button>
+          <button id="btn-reset-data" class="btn-subtle">Reset Progress</button>
+        </div>
+        <div class="controls-hint">
+          Drag backward from the battlements to aim & power up. Release to strike.
+        </div>
+      </div>
+    </div>
+
+    <!-- Level Selection Modal -->
+    <div id="level-screen" class="ui-modal hidden">
+      <div class="modal-box level-box">
+        <h2>SELECT BATTLEFIELD</h2>
+        <div id="level-grid" class="level-grid"></div>
+        <button id="btn-level-back" class="btn-secondary">BACK TO MENU</button>
+      </div>
+    </div>
+
+    <!-- Victory Screen -->
+    <div id="victory-screen" class="ui-modal hidden">
+      <div class="modal-box victory-box">
+        <h2>VICTORY!</h2>
+        <div class="stars-awarded" id="victory-stars">⭐⭐⭐</div>
+        <div class="stat-rows">
+          <div class="stat-row"><span>Castle Integrity:</span><strong id="stat-hp">100%</strong></div>
+          <div class="stat-row"><span>Ammo Used:</span><strong id="stat-ammo">0</strong></div>
+          <div class="stat-row"><span>Rating:</span><strong id="stat-score">Perfect</strong></div>
+        </div>
+        <div class="modal-actions">
+          <button id="btn-retry" class="btn-secondary">RETRY</button>
+          <button id="btn-next-level" class="btn-primary">NEXT LEVEL</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Defeat Screen -->
+    <div id="defeat-screen" class="ui-modal hidden">
+      <div class="modal-box defeat-box">
+        <h2>CASTLE FALLEN</h2>
+        <p id="defeat-reason">Your fortifications breached by the invading horde!</p>
+        <div class="modal-actions">
+          <button id="btn-defeat-retry" class="btn-primary">TRY AGAIN</button>
+          <button id="btn-defeat-menu" class="btn-secondary">MAIN MENU</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
