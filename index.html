@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#1476c8">
+  <title>Castle Guardian - Web Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-wrap">
+    <header class="topbar">
+      <div class="stat health">❤️ <span id="health">100</span></div>
+      <div class="stat coins">🪙 <span id="coins">250</span></div>
+      <div class="level-label">LEVEL <span id="level">1</span></div>
+      <button id="pauseBtn" class="pause" aria-label="Pause">Ⅱ</button>
+    </header>
+    <section class="stage">
+      <canvas id="game" width="1200" height="650" aria-label="Castle defense game"></canvas>
+      <div id="overlay" class="overlay hidden">
+        <div class="modal">
+          <h1 id="overlayTitle">Paused</h1>
+          <p id="overlayText">Game paused</p>
+          <button id="overlayBtn">Continue</button>
+        </div>
+      </div>
+    </section>
+    <footer class="controls">
+      <div class="unit-buttons">
+        <button class="unit active" data-unit="archer"><span class="unit-icon">🏹</span><span>Archer</span><b>🪙 50</b></button>
+        <button class="unit" data-unit="knight"><span class="unit-icon">🛡️</span><span>Knight</span><b>🪙 75</b></button>
+        <button class="unit" data-unit="cannon"><span class="unit-icon">💣</span><span>Cannon</span><b>🪙 100</b></button>
+      </div>
+      <div class="help">
+        <strong id="selectedName">Archer selected</strong>
+        <span>মাঠে টেনে লক্ষ্য ঠিক করো, তারপর FIRE চাপো।</span>
+      </div>
+      <button id="fireBtn" class="fire">🔥 FIRE!</button>
+    </footer>
+    <p class="note">Tip: মোবাইলে আঙুল দিয়ে টেনে Aim করো। কম্পিউটারে মাউস ব্যবহার করো।</p>
+  </main>
+  <script src="levels.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
