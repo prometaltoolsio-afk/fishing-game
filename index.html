@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Castle Guardian - Fixed & Complete</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <div id="ui-header">
+      <div id="level-indicator">লেভেল: <span id="current-level">১</span></div>
+      <div id="score-indicator">স্কোর: <span id="score-val">০</span> | অবশিষ্টাংশ: <span id="ammo-val">৫</span></div>
+      <div id="enemies-indicator">শত্রু বাকি: <span id="enemies-val">০</span></div>
+    </div>
+
+    <!-- UI Overlay for Level Clear / Game Over -->
+    <div id="overlay-modal" class="modal hidden">
+      <div class="modal-content">
+        <h2 id="modal-title">লেভেল সম্পন্ন!</h2>
+        <p id="modal-msg">অসাধারণ নিশানা!</p>
+        <div class="modal-buttons">
+          <button id="modal-btn-next" class="btn primary">পরবর্তী লেভেল</button>
+          <button id="modal-btn-restart" class="btn secondary">পুনরায় চেষ্টা করুন</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="level-select-bar">
+      <button id="btn-restart-current" class="btn small">🔄 রিস্টার্ট</button>
+      <button id="btn-select-level" class="btn small">📋 লেভেল নির্বাচন</button>
+    </div>
+
+    <!-- Level Picker Modal -->
+    <div id="level-picker-modal" class="modal hidden">
+      <div class="modal-content wide">
+        <h2>লেভেল সিলেক্ট করুন</h2>
+        <div id="levels-grid" class="levels-grid"></div>
+        <button id="btn-close-picker" class="btn secondary" style="margin-top:15px;">বন্ধ করুন</button>
+      </div>
+    </div>
+
+    <canvas id="gameCanvas" width="960" height="540"></canvas>
+  </div>
+
+  <script src="levels.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
