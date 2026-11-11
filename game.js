@@ -24,8 +24,8 @@ const castle = {
   hitBarDisplayDuration: 3000 // অ্যাটাক হওয়ার পর হেলথ বার ৩ সেকেন্ড দেখাবে
 };
 
-// ক্যাসেলটিকে আগের চেয়ে উপরে সেট করা হলো (নিচ থেকে ১২০ পিক্সেল উপরে)
-castle.y = canvas.height - castle.height - 120;
+// ক্যাসেলটিকে আগের চেয়ে উপরে সেট করা হলো (নিচ থেকে 240 পিক্সেল উপরে)
+castle.y = canvas.height - castle.height - 240;
 
 function checkAssetLoaded() {
   loadedAssetsCount++;
